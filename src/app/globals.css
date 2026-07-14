@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* taste-skill MOTION=5: scroll-driven reveals with progressive enhancement */
+@keyframes sectionReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Only animate when scroll-driven animations are supported */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-section {
+      animation: sectionReveal 0.7s ease-out both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 20%;
+    }
+    .reveal-card {
+      animation: cardReveal 0.6s ease-out both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 30%;
+    }
+    .reveal-card:nth-child(2)  { animation-delay: 0.06s; }
+    .reveal-card:nth-child(3)  { animation-delay: 0.12s; }
+    .reveal-card:nth-child(4)  { animation-delay: 0.18s; }
+    .reveal-card:nth-child(5)  { animation-delay: 0.24s; }
+    .reveal-card:nth-child(6)  { animation-delay: 0.30s; }
+
+    html { scroll-behavior: smooth; }
+  }
+}
