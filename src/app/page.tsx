@@ -304,12 +304,52 @@ export default function Home() {
         </div>
 
         {/* ════════════════════════════════════════════
-            ACT III — 狼头 3D 终章 (NO eyebrow)
+            ACT III — 工业几何终章 · 纯 CSS 动画
             ════════════════════════════════════════════ */}
-        <section id="wolf-zone" className="relative min-h-[100dvh] bg-black overflow-hidden border-t border-white/[0.04]">
-          <iframe src="./wolf.html" className="absolute inset-0 w-full h-full border-0 pointer-events-none" style={{opacity:0.45}} title="3D Wolf"/>
-          <div className="absolute inset-0 pointer-events-none" style={{background:'radial-gradient(ellipse at 50% 55%,transparent 0%,rgba(0,0,0,0.3) 40%,rgba(0,0,0,0.95) 100%)'}}/>
+        <section id="wolf-zone" className="relative min-h-[100dvh] bg-[#0a0a0a] overflow-hidden border-t border-white/[0.04]">
+          {/* Ambient glow */}
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] rounded-full blur-[120px] opacity-[0.06] pointer-events-none" style={{background:'radial-gradient(circle,rgba(221,196,164,0.8),transparent 70%)'}}/>
+
+          {/* Animated floating gears (pure CSS) */}
+          <style>{`
+            @keyframes gearFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 33%{transform:translateY(-20px) rotate(120deg)} 66%{transform:translateY(10px) rotate(240deg)} }
+            @keyframes gearFloat2 { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-30px) rotate(-180deg)} }
+            @keyframes gearFloat3 { 0%,100%{transform:translateY(0) rotate(0deg)} 40%{transform:translateY(-15px) rotate(90deg)} 80%{transform:translateY(10px) rotate(270deg)} }
+            @keyframes pulse { 0%,100%{opacity:0.08} 50%{opacity:0.18} }
+            .gear { animation: gearFloat 20s ease-in-out infinite; }
+            .gear-2 { animation: gearFloat2 25s ease-in-out infinite; }
+            .gear-3 { animation: gearFloat3 18s ease-in-out infinite; }
+            .pulse-glow { animation: pulse 4s ease-in-out infinite; }
+          `}</style>
+
+          {/* Gear 1 — bottom right large */}
+          <svg className="gear absolute -bottom-20 -right-20 w-[500px] h-[500px] opacity-[0.04] pointer-events-none" viewBox="0 0 256 256" fill="none">
+            <path fill="rgb(221,196,164)" d="M 128 8 L 136 38 L 144 32 L 152 48 L 176 32 L 180 56 L 208 48 L 208 72 L 232 80 L 220 100 L 244 112 L 232 126 L 250 140 L 230 148 L 236 164 L 212 172 L 210 192 L 186 190 L 176 206 L 156 196 L 148 214 L 130 200 L 124 216 L 108 204 L 96 216 L 86 200 L 64 214 L 56 194 L 34 200 L 28 180 L 6 168 L 18 150 L 0 134 L 18 120 L 10 102 L 30 96 L 30 76 L 52 72 L 54 50 L 74 54 L 84 36 L 100 50 L 108 32 Z"/>
+          </svg>
+
+          {/* Gear 2 — top left medium */}
+          <svg className="gear-2 absolute top-[10%] left-[5%] w-[350px] h-[350px] opacity-[0.03] pointer-events-none" viewBox="0 0 200 200" fill="none">
+            <path fill="rgb(221,196,164)" d="M 100 5 L 106 28 L 112 22 L 118 35 L 136 24 L 138 42 L 158 36 L 156 53 L 174 58 L 164 72 L 182 80 L 168 90 L 184 102 L 170 110 L 178 124 L 160 130 L 158 146 L 140 144 L 132 162 L 116 154 L 108 170 L 94 158 L 88 172 L 74 160 L 66 172 L 56 158 L 40 168 L 32 150 L 16 156 L 14 138 L 0 130 L 16 114 L 8 100 L 26 90 L 24 74 L 42 72 L 44 54 L 60 56 L 68 38 L 84 46 Z"/>
+          </svg>
+
+          {/* Gear 3 — mid right small */}
+          <svg className="gear-3 absolute top-[45%] right-[10%] w-[200px] h-[200px] opacity-[0.05] pointer-events-none" viewBox="0 0 150 150" fill="none">
+            <path fill="rgb(221,196,164)" d="M 75 4 L 80 20 L 85 17 L 89 27 L 102 20 L 104 33 L 118 28 L 115 40 L 128 44 L 120 54 L 133 60 L 124 68 L 135 76 L 125 82 L 130 92 L 116 96 L 114 108 L 100 105 L 94 118 L 82 112 L 76 124 L 66 116 L 60 126 L 50 116 L 44 124 L 34 114 L 22 122 L 20 108 L 6 110 L 6 96 L 0 88 L 10 76 L 4 64 L 18 58 L 16 44 L 30 42 L 32 28 L 44 32 L 50 18 L 62 26 Z"/>
+          </svg>
+
+          {/* Dot grid pattern */}
+          <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{
+            backgroundImage: 'radial-gradient(circle, rgba(221,196,164,0.5) 0.5px, transparent 0.5px)',
+            backgroundSize: '48px 48px'
+          }}/>
+
+          {/* Gradient veil */}
+          <div className="absolute inset-0 pointer-events-none" style={{background:'radial-gradient(ellipse at 50% 55%,transparent 0%,rgba(10,10,10,0.4) 50%,rgba(10,10,10,0.95) 100%)'}}/>
+
+          {/* Triangle mark */}
           <div className="absolute left-[8%] top-[10%] w-[35vw] max-w-[500px]"><TriangleMark opacity={0.03}/></div>
+
+          {/* Foreground text */}
           <div className="relative z-10 min-h-[100dvh] flex items-end px-6 sm:px-12 md:px-20 lg:px-28 pb-16 sm:pb-24">
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-32 items-end w-full">
               <div className="max-w-md">
