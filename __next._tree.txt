@@ -1,0 +1,2 @@
+:HL["/guet-im/_next/static/chunks/348l5-xyfx74g.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"MuFAwgFaHSA4HNLmUKJHG"}
